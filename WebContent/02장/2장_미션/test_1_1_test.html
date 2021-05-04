@@ -1,20 +1,29 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<!-- 
+(1) 진영이의 하루 지출 내역이 다음과 같다고 할 때, 하루 지출 비용의 합계를 구한 후 적정 지출 비용의 초과 여부를 출력하세요.
+진영이의 하루 지출 내역은 교통비 3,000원, 식비 6,000원, 음료비 3,000원입니다.
+삼항 조건 연산자를 사용하여 하루 적정 지출 비용인 1만원을 초과했을 경우 "000원 초과"라고 출력되고,
+아니라면 "돈 관리 잘 했어요!"라고 출력되도록 해 보세요.
+ -->
+
+<!DOCTYPE html>
+<html lang="ko">
 <head>
-<meta http-equiv="content-type" content="text/html;charset=utf-8" />
-<title> 종합실습1-1 </title>
-<script type="text/javascript">
-   var price1=3000;
-   var price2=6000;
-   var price3=3000;
-   
-   
-   
-   
-</script>
+	<meta charset="utf-8" />
+	<title>종합실습1-1</title>
+	<script type="text/javascript">
+		var budget = 10000;
+		var price1 = 3000;
+		var price2 = 6000;
+		var price3 = 3000;
+	
+		var total = price1 + price2 + price3;
+		var result = total > budget ?
+				(total - budget) + "원 초과" :
+				"돈 관리 잘 했어요!";
+		document.write(result);
+//		alert(result);
+	</script>
 </head>
-
 <body>
-
 </body>
 </html>

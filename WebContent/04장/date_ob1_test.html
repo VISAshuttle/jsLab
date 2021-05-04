@@ -2,27 +2,35 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
 <head>
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
-<title> 날짜 정보 객체 </title>
+<title>날짜 정보 객체</title>
 <script type="text/javascript">
-//<![CDATA[
-
-
-
-
-   document.write("현재 월:"+nowMonth,"<br />");
-   document.write("현재 일:"+nowDate,"<br />");
-   document.write("현재 요일:"+nowDay,"<br />");
-  
-  
-  
-  
-
-
-
-  document.write("2002월드컵 몇 월:"+theMonth,"<br />");
-   document.write("2002월드컵 몇 일:"+theDate,"<br />");
-   document.write("2002월드컵 무슨 요일:"+theDay,"<br />");
-//]]>
+	//<![CDATA[
+	function getDayString(dayAsNumber) {
+		switch(dayAsNumber) {
+		case 0:	return "일요일";
+		case 1:	return "월요일";
+		case 2:	return "화요일";
+		case 3:	return "수요일";
+		case 4:	return "목요일";
+		case 5:	return "금요일";
+		case 6:	return "토요일";	
+		}
+	}	
+	
+	var date = new Date();
+	var now = new Object();
+	now.month = date.getMonth() + 1 + "월";
+	now.date = date.getDate() + "일";
+	now.day = getDayString(date.getDay());
+	document.write("오늘: " + now.month + " " + now.date + " " + now.day + "<br>");
+	
+	date = new Date("2002-05-31");
+	var worldcup2002 = new Object();
+	worldcup2002.month = date.getMonth() + 1 + "월";
+	worldcup2002.date = date.getDate() + "일";
+	worldcup2002.day = getDayString(date.getDay());
+	document.write("2002년 월드컵: " + worldcup2002.month + " " + worldcup2002.date + " " + worldcup2002.day + "<br>");
+	//]]>
 </script>
 </head>
 <body>

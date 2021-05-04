@@ -1,20 +1,87 @@
 <html>
 <head>
-<title>구구단</title>
-<meta charset="UTF-8">
+	<title>구구단</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css">
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/nanumgothic.css">
+	<style>
+		* {
+			font-family: 'Nanum Gothic';
+			margin: 0;
+			padding: 0;
+		}
+	
+		body {
+			text-align: center;
+		}
+		h1 {
+			font-family: 'NanumSquare';
+			font-size: 2.5em;
+			font-weight: 800;
+			
+			margin: 0 0 0 0;
+		}
+		table {
+			border-collapse: collapse;
+			border: 1px solid;
+			margin: 0 auto;
+			font-size: 18px;
+		}
+		th, td {
+			border: 1px solid;
+			padding: 20px 15px;
+		}
+		th:nth-child(odd), td:nth-child(odd) {
+			background-color: #DDDDDD;
+		}
+		th:nth-child(even), td:nth-child(even) {
+			background-color: #FFFFFF;
+		}
+		th {
+			font-family: 'NanumSquare';
+			font-size: 1.3em;
+			font-weight: 700;
+		}
+		td p {
+			margin: 0 0 5px 0;
+		}
+		
+		.container {
+			display: inline-block;
+			background-color: #95CEA9;
+			margin-top: 100px;
+			padding: 20px 50px 50px 50px;
+		}
+		.table_title {
+			margin-bottom: 20px;
+		}
+	</style>
 </head>
 <body>
-	<center>
-		<h1>구구단</h1>
-	</center>
-	<table border=1 align=center width=800 height=280>
-		<tr>
-
-			<script language="javascript">
-				
-			</script>
-
-		</tr>
-	</table>
+	<div class="container">
+		<h1 class="table_title">구구단</h1>
+		<table>
+			<tr>
+				<script type="text/javascript">
+					for (var i = 2; i <= 9; i++) {
+						document.write("<th>" + i + "단</th>");
+					}
+				</script>
+			</tr>
+			<tr>
+				<script type="text/javascript">
+					for (var i = 2; i <= 9; i++) {
+						document.write("<td>");
+						for (var j = 1; j <= 9; j++) {
+							document.write("<p>");
+							document.write(i + " × " + j + " = " + (i*j) + "<br>");
+							document.write("</p>");
+						}
+						document.write("</td>");
+					}
+				</script>
+			</tr>
+		</table>
+	</div>
 </body>
 </html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>요일은 신경쓰지 마세요...</title>
+</head>
+<body>
+	<script>
+		var year = prompt("현재 몇 년입니까?", "0000");
+		var month = prompt("현재 몇 월입니까?", "0");
+		var last_day;
+
+		// 해당 월의 마지막 날짜 구하기
+		switch (month) {
+			case "1":
+			case "3":
+			case "5":
+			case "7":
+			case "8":
+			case "10":
+			case "12":
+				last_day = 31;
+				break;
+	
+			case "4":
+			case "6":
+			case "9":
+			case "11":
+				last_day = 30;
+				break;
+	
+			// 2월은 윤년인지 판별
+			case "2":
+				if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0)
+					last_day = 29;
+				else
+					last_day = 28;
+				break;
+		}
+	</script>
+	<div>
+		<table>
+
+		</table>
+	</div>
+</body>
+</html>
