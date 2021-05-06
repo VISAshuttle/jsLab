@@ -2,78 +2,69 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title> 달력만들기 </title>
+<title>달력만들기</title>
 <script type="text/javascript">
-//<![CDATA[
-//① 9~17 현재 날짜와 현재 달에 1일의 날짜 객체를 생성합니다.
+	//<![CDATA[
+	var now = new Date();
+	var nowY = now.getFullYear();
+	var nowM = now.getMonth();
 
+	var beginDate = new Date(nowY, nowM, 1);
+	var beginDay = beginDate.getDay();
 
+	var lastDates = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
+	if (nowY % 4 == 0 && nowY % 100 != 0 || nowY % 400 == 0)
+		lastDates[1] = 29;
+	var lastDate = lastDates[nowM];
+	
+	var row = Math.ceil((beginDay + lastDates[nowM]) / 7);
 
+	document.write("<h1>" + nowY + "년 " + (nowM + 1) + "월</h1>");
+	var calendar = "<table class='calendar'>";
+	
+	calendar += "<tr>";
+	calendar += "<th>일</th>";
+	calendar += "<th>월</th>";
+	calendar += "<th>화</th>";
+	calendar += "<th>수</th>";
+	calendar += "<th>목</th>";
+	calendar += "<th>금</th>";
+	calendar += "<th>토</th>";
+	calendar += "</tr>";
+	
+	var printDate = 1;
+ 	for (var i = 0; i < row; i++) {
+		calendar += "<tr>";
+		for (var j = 0; j < 7; j++) {
+			if ((i == 0 && j < beginDay) || printDate > lastDate)
+				calendar += "<td></td>";
+			else {
+				calendar += "<td>" + printDate + "</td>";
+				printDate++;
+			}
+		}
+		calendar += "</tr>";
+	}
 
-
-/*현재 월의 1일에 요일을 구합니다.
-그럼 그달 달력에 첫 번재 줄 빈칸의 개수를 구할 수 있습니다.*/
-
-
- 
-//② 20~26 현재 월에 마지막 일을 구해야 합니다.
-
-//1월부터 12월까지 마지막 일을 배열로 저장합니다.
-
-/*현재 연도가 윤년(4년 주기이고 100년 주기는 제외합니다.
-또는 400년 주기)일 경우 2월에 마지막 날짜는 29가 되어야합니다.*/
-
-
-
-
-/*③ 29~26 현재 월의 성 필요한 행의 개수를 구합니다.
-var row(행의 개수)= Math.ceil( (theDay(빈 칸)+lastDate(월의 전체 일수)) / 7)*/
-
-
-  
-//④ 달력 연도/월 표기 및  달력 테이블 생성
-
-  //문자 결합 연산자를 사용해 요일이 나오는 행을 생
-
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  //앞에서 배운 이중 for 문을 이용해 달력 테이블을 만들겠습니다.
-  
-  
-  
-  
-  
-  /*행이 첫 줄이고 현재 월의 1일의 이전은 모두 빈 열로 
-  표기하고 날짜가 마지막 일보다 크면 빈 열로 표기됩니다.*/
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  //⑤ 문자로 결합된 달력 테이블을 문서에 출력합니다.
-  document.write(calendar);
-//]]>
+	calendar += "</table>";	
+	document.write(calendar);
+	//]]>
 </script>
+<style>
+	.calendar {
+		border: 1px solid;
+		border-collapse: collapse;
+		text-align: center;
+		font-size: 20px;
+	}
+	.calendar th, .calendar td {
+		border: 1px solid;
+		padding: 7px 10px;
+	}
+</style>
 </head>
 
 <body>
-  
+
 </body>
 </html>

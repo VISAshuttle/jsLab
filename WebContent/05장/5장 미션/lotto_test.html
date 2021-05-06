@@ -1,19 +1,92 @@
 <html>
- <head>
- <meta http-equiv="content-type" content="text/html;charset=utf-8" />
-  <title> lotto </title>
-  <script>
-
-function find(){
-
-
-}
-  </script>
- </head>
-
- <body>
- <form>
-	<input type=button value="추첨하기" onClick="find()">
- </form> 
- </body>
+<head>
+<meta charset=utf-8 />
+<title>lotto</title>
+</head>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
+<style>
+	* {
+		font-family: 'Poor Story', cursive;
+		font-size: 24px;
+		text-align: center;
+		margin: 0;
+		padding: 0;
+	}
+	h2 {
+		font-size: 1.3em;
+	}
+	
+	#form1 {
+		display: inline-block;
+		text-align: center;
+		margin-top: 10px;
+	}
+	#form1 fieldset {
+		padding-bottom: 20px;
+		background-color: #95CEA9;
+	}
+	#form1 fieldset legend {
+		padding: 0 10px;
+		background: yellow;
+		border: 2px solid orange;
+		padding: 5px 15px;
+	}
+	.number_container {
+		margin: 20px 0;
+	}
+	
+	#form1 input[type=text] {
+		text-align: center;
+		padding: 5px;
+		margin-left: 15px;
+		border: 1px dashed;
+		background-color: #FFFFFF;
+	}
+	#form1 input[type=text]:last-child {
+		margin-right: 15px;
+	}
+	#btn1 {
+		padding: 10px;
+		background-color: #599DD4;
+		border: none;
+		border-radius: 10px;
+	}
+	#btn1:hover {
+		background-color: #3B688D;
+		color: white;
+	}
+</style>
+<body>
+	<form id=form1 name=form1>
+		<fieldset>
+			<legend><h2>로또번호 자동추첨기</h2></legend>
+			<div class=number_container>
+				<input id=n1 type=text readonly size=2>
+				<input id=n2 type=text readonly size=2>
+				<input id=n3 type=text readonly size=2>
+				<input id=n4 type=text readonly size=2>
+				<input id=n5 type=text readonly size=2>
+				<input id=n6 type=text readonly size=2>
+			</div>
+			<input type=button id=btn1 value="추첨하기!" onClick="find()">
+		</fieldset>
+	</form>
+	
+	<script>
+		function find() {
+			var set = new Set([]);
+			while (set.size != 6) {
+				set.add(Math.floor(Math.random() * 45) + 1);
+			}
+			var result = Array.from(set);
+			result = result.sort((a, b) => a - b);
+			
+			for (var i = 0; i < result.length; i++) {
+				var inputId = "n" + (i+1);
+				document.getElementById(inputId).value = result[i];
+			}
+		}
+	</script>
+</body>
 </html>
