@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+<meta charset="utf-8" />
+<title>이벤트</title>
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+<script>
+	$(function() {
+		function setBtnImg(btn, status) {
+			var btnImg = $("img", btn);
+			var src_orig = btnImg.attr("src");
+			var src_changed;
+			switch (status) {
+			case "on":
+				src_changed = src_orig.replace("out.png", "on.png");
+				break;
+			case "out":
+				src_changed = src_orig.replace("on.png", "out.png");
+				break;
+			case "toggle":
+				src_changed = src_orig.includes("out.png") ? src_orig.replace(
+						"out.png", "on.png") : src_orig.replace("on.png",
+						"out.png");
+				break;
+			}
+			btnImg.attr("src", src_changed);
+		}
+
+		$("#btn1")
+			.click(
+				function() { setBtnImg(this, "toggle"); }
+			);
+
+		$("#btn2")
+			.hover(
+				function() { setBtnImg(this, "on"); },
+				function() { setBtnImg(this, "out"); }
+			)
+			.focusin(
+				function() { setBtnImg(this, "on"); }
+			)
+			.focusout(
+				function() { setBtnImg(this, "out"); }
+			);
+
+		$("#btn3")
+			.hover(
+				function() { setBtnImg(this, "out"); },
+				function() { setBtnImg(this, "on"); }
+			)
+			.focusin(
+				function() { setBtnImg(this, "out"); }
+			)
+			.focusout(
+				function() { setBtnImg(this, "on"); }
+			);
+	});
+</script>
+</head>
+
+<body>
+	<h1>마우스 클릭했을 때 이미지 변경</h1>
+	<p>( images/click_btn_out.png → images/click_btn_on.png )</p>
+	<p>
+		<a href="#" id="btn1"> <img src="images/click_btn_out.png"
+			alt="버튼1" />
+		</a>
+	</p>
+	<h1>마우스 오버했을 때 이미지 변경</h1>
+	<p>( images/click_btn_out.png → images/click_btn_on.png )</p>
+	<p>
+		<a href="#" id="btn2"> <img src="images/over_btn_out.png"
+			alt="버튼2" />
+		</a>
+	</p>
+	<h1>마우스 아웃했을 때 이미지 변경</h1>
+	<p>( images/click_btn_out.png → images/click_btn_on.png )</p>
+	<p>
+		<a href="#" id="btn3"> <img src="images/out_btn_out.png" alt="버튼3" />
+		</a>
+	</p>
+</body>
+
+</html>
