@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<title>new document</title>
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+	//<![CDATA[
+	$(function() {
+		function changeBgColor(object, color) {
+			object.css("background-color", color);
+		}
+
+ 		$("a[href]").on({
+				"mouseover focus" : function() {
+					changeBgColor($(this), "yellow");
+				},
+				"mouseout blur" : function() {
+					changeBgColor($(this), "red");
+				}
+			});
+	});
+	//]]>
+</script>
+</head>
+<body>
+	<a href="http://www.w3.org">버튼</a>
+</body>
+</html>
