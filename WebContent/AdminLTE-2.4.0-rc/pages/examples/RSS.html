@@ -21,6 +21,8 @@
 
     <!-- RSS 리더 CSS -->
     <link rel="stylesheet" href="../../dist/css/pages/RSS.css">
+    <!-- 휴게소 날씨 CSS -->
+    <link rel="stylesheet" href="../../dist/css/pages/RestArea.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -460,6 +462,33 @@
                     <!-- /.box-footer-->
                 </div>
                 <!-- /.box -->
+                
+                <!-- Second box -->
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">휴게소별 날씨 정보</h3>
+
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
+                                title="Collapse">
+                                <i class="fa fa-minus"></i></button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip"
+                                title="Remove">
+                                <i class="fa fa-times"></i></button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+						<table id="restarea_weather">
+							
+						</table>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        Footer
+                    </div>
+                    <!-- /.box-footer-->
+                </div>
+                <!-- /.box -->
 
             </section>
             <!-- /.content -->
@@ -687,6 +716,8 @@
 
     <!-- RSS 리더 -->
     <script src="../../dist/js/pages/RSS.js"></script>
+    <!-- 휴게소 날씨 -->
+	<script src="../../dist/js/pages/RestArea.js"></script>
 
     <script>
         $(document).ready(function () {

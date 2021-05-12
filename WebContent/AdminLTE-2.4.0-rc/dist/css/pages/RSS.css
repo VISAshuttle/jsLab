@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+@import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css);
+
 .box-title {
     font-family: "NanumSquare", sans-serif;
     font-size: 3em;
@@ -20,6 +23,14 @@
     outline: none;
 }
 
+.box-body a:hover {
+	color: #3E8CBC;
+}
+
+.box-body ul {
+	padding-left: 0px;
+}
+
 .box-body li {
     list-style: none;
 }
@@ -27,9 +38,9 @@
 /*탭 메뉴 디자인*/
 
 #news_wrap {
-    width: 380px;
+    width: 400px;
     margin: 0 auto;
-    background: #FFF url("images/rss_bg.gif") 0 0 repeat-x;
+    background: #FFF url("../../img/rss_bg.gif") 0 21px repeat-x;
 }
 
 #news_wrap li {
@@ -46,12 +57,12 @@
 
 #news_wrap li a {
     display: block;
-    width: 210px;
+    width: 300px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     padding-left: 15px;
-    background: url("images/bullet.gif") 5px 10px no-repeat;
+    background: url("../../img/bullet.gif") 5px 10px no-repeat;
 }
 
 #news_wrap h2 {
