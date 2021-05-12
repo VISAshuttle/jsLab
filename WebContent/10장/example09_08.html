@@ -19,15 +19,25 @@ td {
 
 	$(function() {
 		$("#member").on("submit", function() {//"확인"버튼을 눌렀을 때..
+		//	var sendData = $(this).serialize();
 			var username = $("#username").val(); // 서버로 보낼 데이터를 입력창에서 얻어온다.
 			var passwd = $("#passwd").val();
 			var sendData = 'username=' + username + '&passwd=' + passwd;
-			alert(sendData);
-
-			$.post( // 문자열 형식의 데이터를 welcome.jsp 파일로 보낸다.
+			
+ 			$.post( // 문자열 형식의 데이터를 welcome.jsp 파일로 보낸다.
 			"welcome.jsp", sendData, function(msg) {
 				$('#txt1').html(msg);
 			});
+			
+/* 			$.ajax({
+				url: "welcome.jsp",
+				type: "post",
+				data: sendData,
+				success: function(msg) {
+					$("#txt1").html(msg);
+				}
+			}); */
+			
 			return false;
 		});
 	});
