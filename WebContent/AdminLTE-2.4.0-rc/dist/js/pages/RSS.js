@@ -15,7 +15,7 @@ $(function () {
                     if (i == 5) return false;
 
                     var title = d["title"];
-                    var date = new Date(d["pubDate"]); //뉴스 작성 날짜 객체 생성
+                    var date = new Date(d["pubDate"]);
                     var m = date.getFullYear() + "-"
                         + (date.getMonth() + 1) + "-"
                         + date.getDate();

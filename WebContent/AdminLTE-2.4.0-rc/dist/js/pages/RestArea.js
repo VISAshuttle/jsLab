@@ -1,51 +1,59 @@
 function formatDate(date) {
-    var d = new Date(date),
-        year = d.getFullYear(),
-        month = "" + (d.getMonth() + 1),
-        day = "" + d.getDate();
+	var d = new Date(date),
+		year = d.getFullYear(),
+		month = "" + (d.getMonth() + 1),
+		day = "" + d.getDate();
 
-    if (month.length < 2) 
-        month = "0" + month;
-    if (day.length < 2) 
-        day = "0" + day;
+	if (month.length < 2)
+		month = "0" + month;
+	if (day.length < 2)
+		day = "0" + day;
 
-    return year + month + day;
+	return year + month + day;
 }
 
-$(function () {
-	var apiParams = {
+$(function() {
+	const API = "http://data.ex.co.kr/openapi/restinfo/restWeatherList";
+	var params = {
 		key: 1315651132,
 		type: "json",
 		sdate: formatDate(new Date()),
-		stdHour: new Date().getHours(),
+		stdHour: new Date(new Date().getTime() - 10800000).getHours()
 	};
+	console.log(API.concat("?", $.param(params)));
 	$.ajax({
-		url: "http://data.ex.co.kr/openapi/restinfo/restWeatherList",
-		type: "post",
-		data: apiParams,
-		dataType: "jsonp",
-		success: function(result) {
-			alert(result);
-		},
-		error: function(result) {
-			alert(result.responseText);
+		url: API.concat("?", $.param(params)),
+		dataType: "json",
+		success: function(response) {
+			$("#restarea_weather").append(
+				"<thead>" + "<tr>" + 
+					"<td>" + "휴게소명" + "</td>" +
+					"<td>" + "도로명" + "</td>" +
+					"<td>" + "기준시각" + "</td>" +
+					"<td>" + "날씨" + "</td>" +
+					"<td>" + "현재기온" + "</td>" +
+				"</tr>" + "</thead>"
+			);
+			$("#restarea_weather").append("<tbody>");
+			$.each(response.list, function(i, d) {
+				if (i == 10)	return false;
+
+				var unitName = d["unitName"],
+					routeName = d["routeName"],
+					baseTime = d["sdate"] + " " + d["stdHour"] + "시",
+					weatherContents = d["weatherContents"],
+					tempValue = d["tempValue"] + "℃";
+				$("#restarea_weather").append(
+					"<tr>" + 
+						"<td>" + unitName + "</td>" +
+						"<td>" + routeName + "</td>" +
+						"<td>" + baseTime + "</td>" +
+						"<td>" + weatherContents + "</td>" +
+						"<td>" + tempValue + "</td>" +
+					"</tr>"
+				);
+			});
+			$("#restarea_weather").append("</tbody>");
 		}
 	});
-	
-/*	var getURL = "http://data.ex.co.kr/openapi/restinfo/restWeatherList";
-	getURL += "?key=" + apiParams.key;
-		"&type=", apiParams.type,
-		"&sdate=", apiParams.sdate,
-		"&stdHour=", apiParams.stdHour
-	);
-	$.ajax({
-		url: getURL,
-		type: "get",
-		success: function(result) {
-			alert('success');
-		},
-		error: function(result) {
-			alert('error');
-		}
-	});*/
 });
