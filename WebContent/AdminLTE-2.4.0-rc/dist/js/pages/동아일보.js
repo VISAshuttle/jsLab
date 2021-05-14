@@ -1,6 +1,4 @@
 $(document).ready(function() {
-	$('.sidebar-menu').tree();
-
 	function formatDate(d) {
 		var year = "" + d.getFullYear(),
 			month = "" + (d.getMonth() + 1),
